@@ -1,0 +1,32 @@
+<body class="bg-success">
+	<div class="container">
+		<h1 class="text-center mt-5">Listing Articles</h1>
+	  <i class="fa fa-camera-retro"></i>
+	  <i class="fa fa-chevron-right"></i>
+		<div class="row">
+			<% @articles.each do |article| %>
+				<div class="col-md-4 mt-3">
+					<div class="card">
+						<%= link_to article_path(article) do %>
+							<%= image_tag article.cover_image.url, class: "c" %>
+						<% end %>
+						<div class="card-body">
+							<h5 class="card-title">Title: <%= article.title %></h5>
+							<p class="card-text">Text: <%= article.text %></p>
+
+							<%= link_to 'Show', article_path(article), class: "btn btn-primary" %>
+							<%= link_to 'Edit', edit_article_path(article), class: "btn btn-primary" %>
+							<%= link_to 'Destroy', article_path(article),
+							method: :delete,
+							data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+						</div>
+					</div>
+				</div>    
+			<%end%>
+		</div>
+
+		<%= link_to 'New article', new_article_path, class: "btn btn-primary mt-3", data: {turbolinks: false} %>
+	</div>
+
+
+</body>
